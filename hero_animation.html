@@ -1,0 +1,618 @@
+<!-- ============================================================
+     SEAMLESS SOURCE — ORBITAL HERO ANIMATION
+     FINAL CLEAN VERSION
+     - Product-specific labels
+     - Single label visible at once
+     - Certification SVG support
+     - Dot sits on the ring
+     - Container queries for fluid responsive scaling
+     ============================================================ -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/dist/tabler-icons.min.css">
+
+<style>
+
+  .ss-stage{
+    --brand-violet:#BC9EFF;
+    position:relative;
+    width:100%;
+    max-width:700px;
+    margin:0 auto;
+    aspect-ratio:1;
+    font-family:inherit;
+    color:#fff;
+    container-type: inline-size; /* Enables fluid scaling using cqw units */
+  }
+
+  .ss-stage *{
+    box-sizing:border-box;
+  }
+
+
+  .ss-stage .stage__rings{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+
+  .ss-stage .ring{
+    animation:ssTravelGap 14s linear infinite;
+    transform-origin:center;
+  }
+
+  .ss-stage .ring--outer{animation-duration:90s;}
+  .ss-stage .ring--middle{
+    animation-duration:70s;
+    animation-direction:reverse;
+  }
+  .ss-stage .ring--inner{animation-duration:50s;}
+
+  @keyframes ssTravelGap{
+    from{stroke-dashoffset:0;}
+    to{stroke-dashoffset:-100;}
+  }
+
+
+  .ss-stage .stage__glow{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    pointer-events:none;
+  }
+
+  .ss-stage .stage__glow--outer{
+    width:380px;
+    height:380px;
+    background:radial-gradient(circle,rgba(255,255,255,0.18) 0%,transparent 70%);
+    animation:ssGlowPulse 4s ease-in-out infinite;
+  }
+
+  .ss-stage .stage__glow--inner{
+    width:220px;
+    height:220px;
+    background:radial-gradient(circle,rgba(188,158,255,0.35) 0%,transparent 60%);
+    animation:ssGlowPulse 4s ease-in-out infinite .5s;
+  }
+
+  @keyframes ssGlowPulse{
+    0%,100%{opacity:.5;}
+    50%{opacity:.85;}
+  }
+
+
+  .ss-stage .stage__product{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:500px;
+    height:450px;
+    max-width:60%;
+    max-height:60%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:ssFloat 5s ease-in-out infinite;
+    pointer-events:none;
+  }
+
+  @keyframes ssFloat{
+    0%,100%{
+      transform:translate(-50%,-50%) translateY(0);
+    }
+    50%{
+      transform:translate(-50%,-50%) translateY(-10px);
+    }
+  }
+
+  .ss-stage .product{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    opacity:0;
+    transition:opacity .85s ease;
+  }
+
+  .ss-stage .product.is-active{
+    opacity:1;
+  }
+
+
+  .ss-stage .stage__connectors,
+  .ss-stage .stage__label-dots{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+  }
+
+  .ss-stage .stage__connectors{
+    z-index:3;
+  }
+
+  .ss-stage .stage__label-dots{
+    z-index:4;
+  }
+
+  .ss-stage .connector{
+    transition:opacity .6s ease;
+  }
+
+  .ss-stage .label-dot{
+    opacity:0;
+    transition:opacity .6s ease;
+    filter:
+      drop-shadow(0 0 4px rgba(255,255,255,.9))
+      drop-shadow(0 0 10px rgba(110,231,231,.7));
+  }
+
+  .ss-stage .label-dot.is-active{
+    opacity:1;
+  }
+
+
+  .ss-stage .label{
+    position:absolute;
+    opacity:0;
+    transition:
+      opacity .65s ease,
+      transform .65s ease;
+    z-index:5;
+    pointer-events:none;
+  }
+
+  .ss-stage .label.is-visible{
+    opacity:1;
+  }
+
+  .ss-stage .label__card{
+    display:flex;
+    gap: clamp(5px, 1.4cqw, 10px);
+    align-items:center;
+    background:rgba(45,15,90,.55);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:.5px solid rgba(255,255,255,.25);
+    padding: clamp(6px, 1.7cqw, 12px) clamp(8px, 2.3cqw, 16px);
+    border-radius: clamp(6px, 1.7cqw, 12px);
+    white-space:nowrap;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+  }
+
+
+  .ss-stage .label--cert .label__icon{
+    background:rgba(188,158,255,.24);
+    border:1px solid rgba(255,255,255,.14);
+  }
+
+  .ss-stage .label__icon{
+    width: clamp(22px, 5.4cqw, 38px);
+    height: clamp(22px, 5.4cqw, 38px);
+    background:rgba(255,255,255,.15);
+    border-radius: clamp(4px, 1cqw, 7px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    flex:0 0 auto;
+    overflow:hidden;
+  }
+
+  .ss-stage .label__icon i{
+    font-size: clamp(12px, 3cqw, 21px);
+  }
+
+  .ss-stage .label__icon img{
+    width: clamp(12px, 3.1cqw, 22px);
+    height: clamp(12px, 3.1cqw, 22px);
+    object-fit:contain;
+    display:block;
+  }
+
+  .ss-stage .label__title{
+    color:#fff;
+    font-size: clamp(10px, 2.1cqw, 15px);
+    font-weight:500;
+    line-height:1.2;
+  }
+
+  .ss-stage .label__sub{
+    color:rgba(255,255,255,.65);
+    font-size: clamp(8px, 1.7cqw, 12px);
+    line-height:1.2;
+    margin-top:1px;
+  }
+
+
+  
+  /* Slot 0 (Upper Right): Dot is at 64.8%. Label is left-aligned. */
+  .ss-stage .label[data-slot="0"]{
+    left: 62.5%;
+    top: 17.5%;
+    transform: translate(-100%, -50%) scale(.92);
+    transform-origin: right center;
+  }
+  .ss-stage .label[data-slot="0"].is-visible{
+    transform: translate(-100%, -50%) scale(1);
+  }
+
+  
+  .ss-stage .label[data-slot="1"]{
+    left: 7.5%;
+    top: 36%;
+    transform: translate(0, 0) scale(.92);
+    transform-origin: top left;
+  }
+  .ss-stage .label[data-slot="1"].is-visible{
+    transform: translate(0, 0) scale(1);
+  }
+
+
+  .ss-stage .label[data-slot="2"]{
+    left: 63.5%;
+    top: 82%;
+    transform: translate(-100%, -50%) scale(.92);
+    transform-origin: right center;
+  }
+  .ss-stage .label[data-slot="2"].is-visible{
+    transform: translate(-100%, -50%) scale(1);
+  }
+
+
+  @media (max-width:1024px){
+    .ss-stage{max-width:460px;}
+    .ss-stage .stage__glow--outer{width:300px;height:300px;}
+    .ss-stage .stage__glow--inner{width:170px;height:170px;}
+  }
+
+  @media (max-width:768px){
+    .ss-stage{max-width:380px;}
+    .ss-stage .stage__glow--outer{width:240px;height:240px;}
+    .ss-stage .stage__glow--inner{width:140px;height:140px;}
+  }
+
+  @media (max-width:600px){
+    .ss-stage{
+      width:86vw !important;
+      max-width:86vw !important;
+      height:86vw !important;
+      aspect-ratio:unset !important;
+    }
+    .ss-stage .stage__glow--outer{width:200px;height:200px;}
+    .ss-stage .stage__glow--inner{width:120px;height:120px;}
+    .ss-stage .label__sub{display:none;} /* Hide descriptions on mobile to save space */
+  }
+
+  @media (max-width:400px){
+    .ss-stage{
+      width:82vw !important;
+      max-width:82vw !important;
+      height:82vw !important;
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .ss-stage .ring,
+    .ss-stage .stage__glow,
+    .ss-stage .stage__product{
+      animation:none !important;
+    }
+    .ss-stage .product{
+      transition:none;
+    }
+  }
+</style>
+
+<div class="ss-stage">
+
+
+  <svg class="stage__rings" viewBox="0 0 600 600" aria-hidden="true">
+    <circle class="ring ring--outer"
+      cx="300" cy="300" r="285"
+      stroke="rgba(255,255,255,0.08)"
+      fill="none"
+      stroke-width="1.5"
+      pathLength="100"
+      stroke-dasharray="23 4 46 4 23"
+      stroke-linecap="round"/>
+
+    <circle class="ring ring--middle"
+      cx="300" cy="300" r="215"
+      stroke="rgba(255,255,255,0.12)"
+      fill="none"
+      stroke-width="1.7"
+      pathLength="100"
+      stroke-dasharray="22 6 44 6 22"
+      stroke-linecap="round"/>
+
+    <circle class="ring ring--inner"
+      cx="300" cy="300" r="140"
+      stroke="rgba(255,255,255,0.18)"
+      fill="none"
+      stroke-width="2"
+      pathLength="100"
+      stroke-dasharray="42 16 42"
+      stroke-linecap="round"/>
+  </svg>
+
+  <!-- Glow halos -->
+  <div class="stage__glow stage__glow--outer"></div>
+  <div class="stage__glow stage__glow--inner"></div>
+
+
+  <div class="stage__product">
+    <img class="product is-active"
+      src="https://seamlesssource.com/wp-content/uploads/2026/05/glove.webp"
+      alt="PPE Glove">
+    <img class="product"
+      src="https://seamlesssource.com/wp-content/uploads/2026/05/workwear.webp"
+      alt="PPE Jacket">
+    <img class="product"
+      src="https://seamlesssource.com/wp-content/uploads/2026/05/toy-scaled.webp"
+      alt="Electronic Toy">
+    <img class="product"
+      src="https://seamlesssource.com/wp-content/uploads/2026/05/homeware.webp"
+      alt="Sofa">
+  </div>
+
+
+  <svg class="stage__connectors" viewBox="0 0 600 600">
+    <line class="connector"
+      data-slot="0"
+      x1="300" y1="300"
+      x2="389" y2="105"
+      stroke="rgba(255,255,255,0.35)"
+      stroke-width="0.8"
+      stroke-dasharray="3 4"
+      opacity="0"/>
+
+    <line class="connector"
+      data-slot="1"
+      x1="300" y1="300"
+      x2="33" y2="200"
+      stroke="rgba(255,255,255,0.35)"
+      stroke-width="0.8"
+      stroke-dasharray="3 4"
+      opacity="0"/>
+
+    <line class="connector"
+      data-slot="2"
+      x1="300" y1="300"
+      x2="396" y2="492"
+      stroke="rgba(255,255,255,0.35)"
+      stroke-width="0.8"
+      stroke-dasharray="3 4"
+      opacity="0"/>
+  </svg>
+
+
+  <svg class="stage__label-dots" viewBox="0 0 600 600">
+    <circle class="label-dot" data-slot="0" cx="389" cy="105" r="5" fill="#fff"/>
+    <circle class="label-dot" data-slot="1" cx="33"  cy="200" r="5" fill="#fff"/>
+    <circle class="label-dot" data-slot="2" cx="396" cy="492" r="5" fill="#fff"/>
+  </svg>
+
+
+  <div class="label" data-slot="0">
+    <div class="label__card">
+      <div class="label__icon">
+        <i class="ti ti-shield-check"></i>
+      </div>
+      <div>
+        <div class="label__title"></div>
+        <div class="label__sub"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="label" data-slot="1">
+    <div class="label__card">
+      <div class="label__icon">
+        <i class="ti ti-route"></i>
+      </div>
+      <div>
+        <div class="label__title"></div>
+        <div class="label__sub"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       LABEL SLOT 3
+       ============================================================ -->
+  <div class="label" data-slot="2">
+    <div class="label__card">
+      <div class="label__icon">
+        <i class="ti ti-qrcode"></i>
+      </div>
+      <div>
+        <div class="label__title"></div>
+        <div class="label__sub"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const root = document.querySelector('.ss-stage');
+  if (!root) return;
+
+
+  const products = [
+    {
+      key:'glove',
+      labels:[
+        {
+          icon:'ti ti-hammer',
+          title:'EN 388 Expiry Tracking',
+          sub:'90, 30, 7-day alerts active'
+        },
+        {
+          icon:'ti ti-route',
+          title:'Supply Chain Traced',
+          sub:'Supplier steps mapped'
+        },
+        {
+          icon:'ti ti-qrcode',
+          title:'DPP Generated',
+          sub:'ESPR ready'
+        }
+      ]
+    },
+    {
+      key:'jacket',
+      labels:[
+        {
+          icon:'ti ti-certificate',
+          title:'CE + UKCA Linked',
+          sub:'Declarations and files stored'
+        },
+        {
+          icon:'ti ti-building-factory-2',
+          title:'Factory Audit Linked',
+          sub:'Facility checks on file'
+        },
+        {
+          icon:'ti ti-flask',
+          title:'EN ISO 374-1 Linked',
+          sub:'Chemical protection records'
+        }
+      ]
+    },
+    {
+      key:'toy',
+      labels:[
+        {
+          icon:'ti ti-shield-check',
+          title:'EN 71 Linked',
+          sub:'Toy safety checks logged'
+        },
+        {
+          icon:'ti ti-cpu',
+          title:'Component Traced',
+          sub:'Parts + supplier data linked'
+        },
+        {
+          icon:'ti ti-package',
+          title:'Material Records',
+          sub:'Packaging and BOM linked'
+        }
+      ]
+    },
+    {
+      key:'sofa',
+      labels:[
+        {
+          icon:'ti ti-shield-check',
+          title:'Upholstery Safety Linked',
+          sub:'Material compliance tracked'
+        },
+        {
+          icon:'ti ti-recycle',
+          title:'End of Life Guidance',
+          sub:'Repair and recycling data linked'
+        },
+        {
+          icon:'ti ti-list-details',
+          title:'Assembly Traced',
+          sub:'Foam, fabric and trim linked'
+        }
+      ]
+    }
+  ];
+
+  const labels = Array.from(root.querySelectorAll('.label'));
+  const connectors = Array.from(root.querySelectorAll('.connector'));
+  const dots = Array.from(root.querySelectorAll('.label-dot'));
+  const productImgs = Array.from(root.querySelectorAll('.product'));
+
+
+  const phasePairs = [
+    [0],
+    [1],
+    [2]
+  ];
+
+  const LABEL_PHASE_MS = 2400;
+
+  const labelEls = labels.map(el => ({
+    root: el,
+    iconWrap: el.querySelector('.label__icon'),
+    title: el.querySelector('.label__title'),
+    sub: el.querySelector('.label__sub')
+  }));
+
+  let productIndex = 0;
+  let phaseIndex = 0;
+
+  function setProductImage(index){
+    productImgs.forEach((img, i) => {
+      img.classList.toggle('is-active', i === index);
+    });
+  }
+
+  function renderLabels(){
+    const product = products[productIndex];
+    const pair = phasePairs[phaseIndex];
+
+    labelEls.forEach((slot, slotIndex) => {
+      const isVisible = pair.includes(slotIndex);
+
+
+      if (isVisible) {
+        const data = product.labels[slotIndex];
+
+        if (data.image) {
+          slot.root.classList.add('label--cert');
+          slot.iconWrap.innerHTML = `<img src="${data.image}" alt="">`;
+        } else {
+          slot.root.classList.remove('label--cert');
+          slot.iconWrap.innerHTML = `<i class="${data.icon}"></i>`;
+        }
+
+        slot.title.textContent = data.title;
+        slot.sub.textContent = data.sub;
+      }
+
+      slot.root.classList.toggle('is-visible', isVisible);
+    });
+
+    connectors.forEach((line, slotIndex) => {
+      line.setAttribute('opacity', pair.includes(slotIndex) ? '0.5' : '0');
+    });
+
+    dots.forEach((dot, slotIndex) => {
+      dot.classList.toggle('is-active', pair.includes(slotIndex));
+    });
+  }
+
+  function advance(){
+    phaseIndex++;
+
+    if (phaseIndex > 2) {
+      phaseIndex = 0;
+      productIndex = (productIndex + 1) % products.length;
+      setProductImage(productIndex);
+    }
+
+    renderLabels();
+  }
+
+  setProductImage(0);
+  renderLabels();
+  setInterval(advance, LABEL_PHASE_MS);
+})();
+</script>

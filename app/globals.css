@@ -1,0 +1,63 @@
+@import "../css/style.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+}
+
+.home-note {
+  margin-top: 16px;
+}
+
+.center-action {
+  text-align: center;
+  margin-top: 42px;
+}
+
+.pale-section {
+  background: var(--pale);
+}
+
+.product-card-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-layout h3,
+.mini-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.product-card-layout p {
+  flex-grow: 1;
+}
+
+.full-width-button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.cta-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.cta-actions {
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.button-outline-light {
+  border: 1px solid var(--white);
+  background: transparent;
+  color: var(--white);
+}
+
+.demo-side-note {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
