@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "RootProof Platform | Product Data Management for Rubber Exporters",
+  description:
+    "RootProof helps rubber exporters manage product data, supplier evidence, certificates and buyer-ready proof in one connected platform.",
+};
+
 export default function HomePage() {
   return (
     <main>
@@ -176,6 +182,17 @@ export default function HomePage() {
         </div>
         <div className="card-grid three">
           <article className="feature-card product-card product-card-layout">
+            <svg className="product-visual" viewBox="0 0 360 140" fill="none" aria-hidden="true">
+              <rect x="32" y="18" width="296" height="104" rx="18" fill="#F4F9EF" />
+              <rect x="54" y="34" width="118" height="72" rx="12" fill="#FFFFFF" stroke="#D7E2D1" />
+              <rect x="72" y="52" width="82" height="10" rx="5" fill="#4A8F18" opacity="0.18" />
+              <rect x="72" y="70" width="64" height="10" rx="5" fill="#8FD22A" opacity="0.3" />
+              <rect x="72" y="88" width="92" height="8" rx="4" fill="#123C1D" opacity="0.1" />
+              <path d="M182 70H228" stroke="#8FD22A" strokeWidth="3" strokeDasharray="6 6" />
+              <rect x="236" y="30" width="72" height="80" rx="14" fill="#123C1D" />
+              <path d="M255 58L272 48L289 58V81L272 91L255 81V58Z" stroke="#8FD22A" strokeWidth="2" />
+              <path d="M272 64V53M263 59L272 64L281 59" stroke="#8FD22A" strokeWidth="1.6" strokeLinecap="round" />
+            </svg>
             <h3>RootProof Lifecycle</h3>
             <p>
               Manage product information from development to delivery, including specifications,
@@ -186,6 +203,17 @@ export default function HomePage() {
             </Link>
           </article>
           <article className="feature-card product-card product-card-layout">
+            <svg className="product-visual" viewBox="0 0 360 140" fill="none" aria-hidden="true">
+              <rect x="28" y="18" width="304" height="104" rx="18" fill="#F4F9EF" />
+              <rect x="52" y="30" width="256" height="80" rx="14" fill="#FFFFFF" stroke="#D7E2D1" />
+              <rect x="74" y="48" width="86" height="12" rx="6" fill="#4A8F18" opacity="0.14" />
+              <rect x="74" y="70" width="124" height="8" rx="4" fill="#123C1D" opacity="0.1" />
+              <rect x="74" y="86" width="68" height="8" rx="4" fill="#8FD22A" opacity="0.32" />
+              <rect x="220" y="44" width="64" height="52" rx="10" fill="#EAF5E2" stroke="#D7E2D1" />
+              <rect x="234" y="56" width="36" height="6" rx="3" fill="#4A8F18" opacity="0.35" />
+              <rect x="234" y="68" width="28" height="6" rx="3" fill="#4A8F18" opacity="0.2" />
+              <rect x="234" y="80" width="40" height="6" rx="3" fill="#8FD22A" opacity="0.4" />
+            </svg>
             <h3>RootProof Product Hub</h3>
             <p>
               Store completed product information, certificates, test reports, quality documents,
@@ -196,6 +224,18 @@ export default function HomePage() {
             </Link>
           </article>
           <article className="feature-card product-card product-card-layout">
+            <svg className="product-visual" viewBox="0 0 360 140" fill="none" aria-hidden="true">
+              <rect x="44" y="16" width="272" height="108" rx="18" fill="#FFFFFF" stroke="#D7E2D1" />
+              <rect x="44" y="16" width="272" height="24" rx="18" fill="#123C1D" />
+              <rect x="68" y="54" width="64" height="64" rx="10" fill="#EAF5E2" stroke="#4A8F18" />
+              <rect x="80" y="66" width="12" height="12" rx="2" fill="#4A8F18" />
+              <rect x="98" y="66" width="12" height="12" rx="2" fill="#4A8F18" />
+              <rect x="80" y="84" width="12" height="12" rx="2" fill="#4A8F18" />
+              <rect x="98" y="84" width="12" height="12" rx="2" fill="#8FD22A" />
+              <rect x="152" y="60" width="118" height="8" rx="4" fill="#4A8F18" opacity="0.16" />
+              <rect x="152" y="80" width="86" height="8" rx="4" fill="#4A8F18" opacity="0.12" />
+              <rect x="152" y="100" width="62" height="8" rx="4" fill="#8FD22A" opacity="0.3" />
+            </svg>
             <h3>RootProof Passport</h3>
             <p>
               Generate Digital Product Passport records and QR codes using approved product and
@@ -219,7 +259,12 @@ export default function HomePage() {
         </div>
         <div className="outcomes-grid">
           <article className="mini-card">
-            <div className="outcome-icon">⏱️</div>
+            <div className="outcome-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="8" stroke="#4A8F18" strokeWidth="2" />
+                <path d="M12 8V12L15 15" stroke="#4A8F18" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </div>
             <h3>Faster buyer response</h3>
             <p>
               Find product details, certificates and supporting documents faster when customers
@@ -227,7 +272,11 @@ export default function HomePage() {
             </p>
           </article>
           <article className="mini-card">
-            <div className="outcome-icon">📁</div>
+            <div className="outcome-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H10L12 7H17.5A2.5 2.5 0 0 1 20 9.5V16.5A2.5 2.5 0 0 1 17.5 19H6.5A2.5 2.5 0 0 1 4 16.5V7.5Z" stroke="#4A8F18" strokeWidth="2" strokeLinejoin="round" />
+              </svg>
+            </div>
             <h3>Stronger document control</h3>
             <p>
               Keep product records, test reports and approved claims connected to the right
@@ -235,7 +284,13 @@ export default function HomePage() {
             </p>
           </article>
           <article className="mini-card">
-            <div className="outcome-icon">👥</div>
+            <div className="outcome-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="9" cy="9" r="3.5" stroke="#4A8F18" strokeWidth="2" />
+                <circle cx="16" cy="10" r="2.5" stroke="#8FD22A" strokeWidth="2" />
+                <path d="M4.5 18C4.5 15.5 6.8 14 9.5 14H10.5C13.2 14 15.5 15.5 15.5 18" stroke="#4A8F18" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </div>
             <h3>Better team visibility</h3>
             <p>
               Help product, quality, compliance, export and management teams work from the same
@@ -243,7 +298,15 @@ export default function HomePage() {
             </p>
           </article>
           <article className="mini-card">
-            <div className="outcome-icon">📱</div>
+            <div className="outcome-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="5" y="5" width="14" height="14" rx="3" stroke="#4A8F18" strokeWidth="2" />
+                <rect x="8" y="8" width="3" height="3" rx="1" fill="#4A8F18" />
+                <rect x="13" y="8" width="3" height="3" rx="1" fill="#4A8F18" />
+                <rect x="8" y="13" width="3" height="3" rx="1" fill="#4A8F18" />
+                <rect x="13" y="13" width="3" height="3" rx="1" fill="#8FD22A" />
+              </svg>
+            </div>
             <h3>DPP and QR readiness</h3>
             <p>
               Prepare approved product data for Digital Product Passport records and QR-code
@@ -251,7 +314,12 @@ export default function HomePage() {
             </p>
           </article>
           <article className="mini-card">
-            <div className="outcome-icon">🤝</div>
+            <div className="outcome-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 12H16M12 8V16" stroke="#8FD22A" strokeWidth="2" strokeLinecap="round" />
+                <path d="M4 8V6C4 4.9 4.9 4 6 4H8M16 4H18C19.1 4 20 4.9 20 6V8M20 16V18C20 19.1 19.1 20 18 20H16M8 20H6C4.9 20 4 19.1 4 18V16" stroke="#4A8F18" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
             <h3>Supplier-side evidence</h3>
             <p>
               Invite suppliers or source partners to contribute selected information while the
